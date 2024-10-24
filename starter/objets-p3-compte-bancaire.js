@@ -12,3 +12,20 @@ OBJETS - PRÉPA 3 : Modélisation d'un compte bancaire
    - puis le débiter de 80,
    - et enfin afficher de nouveau sa description.
 */
+
+const compte = {
+    titulaire: 'Alex',
+    solde: 0,
+    crediter (montant){
+        this.solde += montant;
+    },
+    decrire(){
+        console.log(`Bonjour ${this.titulaire}, vous avez actuellement ${this.solde}€ sur votre compte.`);
+    }
+}
+
+compte.decrire();
+compte.crediter(250);
+compte.crediter(-80);
+compte.decrire();
+

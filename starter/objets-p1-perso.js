@@ -18,3 +18,25 @@ Aurora s'apprête à vivre une longue série d'aventures, dont certaines pourron
 10. Ajoute 10 points de force à Aurora
 11. Réaffiche la description d'aurora
 */
+
+const aurora = {
+    name: 'Aurora',
+    vigor: 150,
+    strengh: 25,
+    xp: 0,
+    discribe(){
+        console.log(`${this.name} a ${this.vigor} point·s de vie, ${this.strengh} en force et ${this.xp} point·s d'experience.`);
+    }
+}
+
+aurora.discribe();
+console.log('Aurora apprend une nouvelle compétence !');
+aurora.xp = 15;
+aurora.discribe();
+console.log('Aurora est blessée par une flèche');
+aurora.vigor = aurora.vigor - 20;
+console.log('Aurora trouve un bracelet de force')
+aurora.strengh = aurora.strengh + 10;
+aurora.discribe();
+
+

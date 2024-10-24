@@ -40,3 +40,75 @@ du tableau (c'est comme cela qu'on calcule une moyenne).
 
 BONNE CHANCE 😀
 */
+
+const familleJohn = {
+    factures: [124, 48, 268, 42],
+    montantsFinaux: [],
+    pourboire: [],
+    calculPourboire() {
+        for (let i = 0; i < this.factures.length; i++) {
+            if (this.factures[i] < 50) {
+                this.montantsFinaux[i] = this.factures[i] + this.factures[i] * 0.2;
+                this.pourboire[i] = (this.factures[i] * 0.2).toFixed(1);
+            } else if (this.factures[i] >= 50 && this.factures[i] < 200) {
+                this.montantsFinaux[i] = this.factures[i] + this.factures[i] * 0.15;
+                this.pourboire[i] = (this.factures[i] * 0.15).toFixed(1);
+            } else {
+                this.montantsFinaux[i] = this.factures[i] + this.factures[i] * 0.1;
+                this.pourboire[i] = (this.factures[i] * 0.1).toFixed(1);
+            }
+        }
+    }
+}
+
+familleJohn.calculPourboire();
+console.log(familleJohn.factures);
+console.log(familleJohn.montantsFinaux);
+console.log(familleJohn.pourboire);
+
+
+const familleMark = {
+    factures: [77, 375, 110, 45],
+    montantsFinaux: [],
+    pourboire: [],
+    calculPourboire() {
+        for (let i = 0; i < this.factures.length; i++) {
+            if (this.factures[i] < 100) {
+                this.montantsFinaux[i] = this.factures[i] + this.factures[i] * 0.2;
+                this.pourboire[i] = (this.factures[i] * 0.2).toFixed(1);
+            } else if (this.factures[i] >= 100 && this.factures[i] < 300) {
+                this.montantsFinaux[i] = this.factures[i] + this.factures[i] * 0.1;
+                this.pourboire[i] = (this.factures[i] * 0.10).toFixed(1);
+            } else {
+                this.montantsFinaux[i] = this.factures[i] + this.factures[i] * 0.25;
+                this.pourboire[i] = (this.factures[i] * 0.25).toFixed(1);
+            }
+        }
+    }
+}
+
+familleMark.calculPourboire();
+console.log(familleMark.factures);
+console.log(familleMark.montantsFinaux);
+console.log(familleMark.pourboire);
+
+const moyennePourboire = function (tablePourboire) {
+    let somme = 0;
+    for (let i = 0; i < tablePourboire.length; i++) {
+        somme += Number(tablePourboire[i]);
+    }
+    return somme / tablePourboire.length;
+}
+
+const moyennePourboireJohn = moyennePourboire(familleJohn.pourboire);
+const moyennePourboireMark =moyennePourboire(familleMark.pourboire);
+
+if (moyennePourboireMark > moyennePourboireJohn) {
+    console.log(`La famille de Mark est plus généreuse avec une moyenne de ${moyennePourboireMark}€ de pourboire.`);
+}else if(moyennePourboireMark < moyennePourboireJohn) {
+    console.log(`La famille de John est plus généreuse avec une moyenne de ${moyennePourboireJohn}€ de pourboire.`)
+}else {
+    console.log(`Les deux familles ont donné le même montant de pourboire. ${moyennePourboireMark}€.`)
+}
+
+
